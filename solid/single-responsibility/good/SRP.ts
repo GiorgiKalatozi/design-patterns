@@ -7,21 +7,28 @@ class User {
     private readonly password: string
   ) {}
 
-  getGreeting(): string {
+  public getGreeting(): string {
     return `Hello, ${this.name}!`;
   }
 }
 
-// Separate AuthService for authentication logic
+// AuthService handling authentication logic
 class AuthService {
-  login(email: string, password: string) {
-    // ... authentication logic
-  }
+  public login(email: string, password: string) {}
 
-  signup(name: string, email: string, password: string): User {
-    //
+  public signup(name: string, email: string, password: string): User {
     return new User("UNIQUE_ID", name, email, password);
   }
+
+  public async changePassword(
+    oldPassword: string,
+    newPassword: string
+  ): Promise<void> {}
+}
+
+// EmailService handling email related actions
+class EmailService {
+  async sendPasswordResetEmail(user: User) {}
 }
 
 const authService = new AuthService();
