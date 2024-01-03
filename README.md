@@ -6,10 +6,10 @@ This repository is a comprehensive guide to understanding and applying both the 
 
 - [Introduction](#introduction)
 - [SOLID Principles](#solid-principles)
-  - [Single Responsibility Principle (SRP)](#single-responsibility-principle-srp)
-  - [Open/Closed Principle (OCP)](#openclosed-principle-ocp)
-  - [Liskov Substitution Principle (LSP)](#liskov-substitution-principle-lsp)
-  - [Interface Segregation Principle (ISP)](#interface-segregation-principle-isp)
+  - [Single Responsibility Principle (SRP)](#single-responsibility-principle-srp-one-class-one-job-🛠️)
+  - [Open/Closed Principle (OCP)](#openclosed-principle-ocp-🚪🔒)
+  - [Liskov Substitution Principle (LSP)](#liskov-substitution-principle-lsp-🔄)
+  - [Interface Segregation Principle (ISP)](#interface-segregation-principle-isp-🧩)
   - [Dependency Inversion Principle (DIP)](#dependency-inversion-principle-dip)
 - [Design Patterns](#design-patterns)
   - [Creational Patterns](#creational-patterns)
@@ -102,7 +102,27 @@ By applying the Open/Closed Principle, you can write cleaner, more robust, and a
 
 ### Liskov Substitution Principle (LSP) 🔄
 
-The LSP states that objects of a superclass should be able to replace objects of the subclass without affecting the correctness of the program. It ensures that inheritance is used appropriately.
+The Liskov Substitution Principle (LSP) is one of the SOLID principles, named after Barbara Liskov. It states that objects of a superclass should be able to replace objects of the subclass without affecting the correctness of the program. In other words, if a program is using a base class, it should be able to use any of its derived classes without knowing it, and the program should still behave correctly. It ensures that inheritance is used appropriately.
+
+## Why LSP?
+
+The Liskov Substitution Principle (LSP) forges trust in software inheritance. It states that objects of a subtype should be replaceable with objects of its supertype without altering the correctness of the program. In simpler terms, subclasses should seamlessly fit into the shoes of their parent classes, ensuring consistent behavior.
+
+**Imagine:** Your code builds a house. LSP guarantees that replacing a wooden door with a metal one (subtypes of Door) won't cause the house to collapse or the locks to malfunction. Both doors fulfill the essential needs of a door, even though they differ in material.
+
+### LSP in TypeScript:
+
+- Subtypes extend supertype behaviors (methods, properties)
+- Subtype implementations shouldn't break existing code relying on supertype behavior
+- Subtype behavior should be consistent with supertype expectations
+
+### Key Points:
+
+- Subtypes shouldn't weaken preconditions (assumptions made by supertype code)
+- Postconditions (guarantees made by supertype methods) should hold for subtypes
+- Subtypes can extend functionality without breaking supertype contracts
+
+By following the Liskov Substitution Principle in TypeScript, you ensure a robust and reliable foundation for your object-oriented designs. Happy coding! 🌐
 
 ### Interface Segregation Principle (ISP) 🧩
 
