@@ -38,6 +38,8 @@ The OCP encourages classes to be open for extension but closed for modification.
 
 The Open/Closed Principle (OCP) lies at the heart of building adaptable and maintainable software. It states that software entities (such as classes, modules, functions) should be open for extension but closed for modification. In simpler terms, you should be able to add new functionalities without having to touch existing code.
 
+The Open/Closed Principle encourages the use of abstraction, polymorphism, and interfaces to achieve flexibility and extensibility without altering existing code. It promotes a design where new functionalities can be introduced by adding new code, not by changing existing code.
+
 #### How does it work?
 
 Imagine your code as a building. OCP encourages a design where you can add new floors and features through extensions (like building upon the existing structure) without having to demolish and rebuild the entire foundation. This leads to several benefits:
