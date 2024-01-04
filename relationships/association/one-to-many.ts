@@ -1,28 +1,30 @@
 class Author {
-  private name: string;
-  public books: Book[] = [];
+  name: string;
+  books: Book[];
 
   constructor(name: string) {
     this.name = name;
+    this.books = [];
   }
 
-  public addBook(title: string) {
-    this.books.push(new Book(this, title));
+  public writeBook(title: string): void {
+    this.books.push(new Book(title, this));
   }
 }
 
 class Book {
-  public title: string;
-  public author: Author;
+  title: string;
+  author: Author;
 
-  constructor(author: Author, title: string) {
-    this.author = author;
+  constructor(title: string, author: Author) {
     this.title = title;
+    this.author = author;
   }
 }
 
-const shakespeare = new Author("William Shakespeare");
-shakespeare.addBook("Hamlet");
-shakespeare.addBook("Romeo and Juliet");
-
-console.log(`Shakespeare wrote ${shakespeare.books.length} books`);
+// Usage
+const jkRowling = new Author("J.K. Rowling");
+jkRowling.writeBook("Harry Potter and the Prisoner of Azkaban");
+jkRowling.writeBook("Harry Potter and the Philosopher's Stone");
+jkRowling.writeBook("Harry Potter and the Half-Blood Prince");
+jkRowling.writeBook("Harry Potter and the Order of the Phoenix");
