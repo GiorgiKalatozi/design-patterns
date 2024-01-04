@@ -1,3 +1,17 @@
+class Actor {
+  public name: string;
+  public movies: Movie[];
+
+  constructor(name: string) {
+    this.name = name;
+    this.movies = [];
+  }
+
+  starInMovie(movie: Movie): void {
+    this.movies.push(movie);
+  }
+}
+
 class Movie {
   public title: string;
   public actors: Actor[] = [];
@@ -6,23 +20,20 @@ class Movie {
     this.title = title;
   }
 
-  public addActor(actor: Actor) {
+  public addActor(actor: Actor): void {
     this.actors.push(actor);
-    actor.movies.push(this); // Add movie to actor's list
   }
 }
 
-class Actor {
-  public name: string;
-  public movies: Movie[] = [];
+const gameOfThrones = new Movie("Game of Thrones");
+const aquaman = new Movie("Aquaman");
 
-  constructor(name: string) {
-    this.name = name;
-  }
-}
+const kit = new Actor("Kit Harington");
+const jason = new Actor("Jason Momoa");
+const peter = new Actor("Peter Dinklage");
 
-const matrix = new Movie("The Matrix");
-const keanu = new Actor("Keanu Reeves");
-matrix.addActor(keanu);
+gameOfThrones.addActor(kit);
+gameOfThrones.addActor(jason);
+gameOfThrones.addActor(peter);
 
-console.log(`Keanu has starred in ${keanu.movies.length} movies`);
+aquaman.addActor(jason);
