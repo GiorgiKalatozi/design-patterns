@@ -217,3 +217,61 @@ Think of high-level code as the captain of a ship, and low-level code as the eng
 ---
 
 DIP is a powerful principle that contributes to building maintainable, scalable, and flexible software architectures. It plays a vital role in achieving a robust and adaptable design.
+
+Association
+In object-oriented general software design, the relationship between one object's functionality and another's is known as an association. Note that an association between two objects is not the same thing as inheritance between two classes. Association means that one object uses another object or a function/method in that other object. In other words, association is defined as the relationship between objects when one object has one or more references to other objects.
+
+Below are the core differences between association and inheritance:
+
+Inheritance implies that two objects are the same type of object. One object just happens to be either a more generalized or more specific version of the other object. Association occurs between two different objects.
+
+Inheritance is said to be an IS-A relationship whereas association is known as a HAS-A relationship.
+
+The modality of inheritance depends on the programming language features. For example, Java does not support multiple inheritance, but C++ does. On the other hand, any language can have one-to-one, one-to-many, and many-to-many associations between objects.
+There are two types of associations between objects: composition and aggregation. Let's understand what those are.
+
+Composition
+Composition is a form of association that occurs when an object's life is tightly bound to another object's life. When the main object dies (i.e., is deleted), all the objects that are associated with that object also die. This means that the referenced object is solely contained by the referring object.
+
+There are a lot of real-life examples of composition in OOP. We are going to present the most used composition example here: the Vehicle example.
+
+// Vehicle.js
+class Vehicle {
+constructor() {
+this.wheels = Array(4).fill(new Wheel());
+this.doors = Array(4).fill(new Door());
+this.seats = Array(4).fill(new Seat());
+}
+
+    mode(a, b) {
+        // Moving
+    }
+
+}
+
+// index.js
+const vehicle = new Vehicle();
+// Do something with Vehicle
+// The Wheel, Door, and seats will be garbage collected when they're no longer in use
+
+Note that you cannot keep the Door or any other object alive after destroying the Vehicle object. This is why it's called composition: the Vehicle class/object is composed of Doors, Wheels, and Seats.
+
+Composition is a stronger form of Aggregation, where the contained class has a strong lifecycle dependency on the container class. If the container is destroyed, the contained class is also destroyed.
+Composition: This is a stronger form of association where a "whole" class owns its "part" classes. When the whole object is destroyed, its parts are also destroyed automatically. This represents a "has-a" relationship. For example, a car class might be composed of wheel, engine, and seat classes. The car owns these parts and manages their lifecycle.
+Composition is a Has-A relationship between classes where both classes are dependent on each other. One object cannot exist without the existence of another object. For example, the relation between Laptop and its Processor. A laptop cannot exist without its processor.
+
+Aggregation represents a "has-a" relationship where one class contains another class, but the contained class can exist independently. It's a weaker form of association.
+Aggregation is a Has-A relationship between two objects where each object can exist without another object. In other words, these objects are independent
+Aggregation: Similar to composition, but the "part" objects have their own independent lifecycles. They are simply used by the "whole" object but can exist without it. For example, a library class might aggregate various book objects. The library uses the books but they can exist and be used elsewhere as well.
+
+Dependency represents a "uses-a" relationship where one class depends on another class, but there is no ownership or containment involved. Changes in one class may affect the other, but they are independent entities.
+
+the term "dependency" implies that one component relies on another. It signifies a relationship where a change in one component can affect the behavior or state of another.
+
+"Dependency injection" is a specific technique for implementing dependency relationships. It involves injecting dependencies into a class from the outside rather than letting the class create them internally. This can be achieved through constructor injection, method injection, or property injection.
+
+"dependency relationship" is a general term referring to any situation where one piece of code relies on another, while "dependency injection" is a specific technique for managing dependencies by injecting them from the outside. Dependency injection is a means of implementing dependency relationships in a way that promotes flexibility and maintainability, especially in the context of Inversion of Control.
+
+Inheritance is an Is-A relationship between classes where parent class is a general class and child class is a specific class. For example, the relation between cat, dog, and its general class, which is animal. An animal can be specified as a cat or dog. Cat and dog can be generalized as an animal.
+
+This is an "is-a" relationship where a child class inherits properties and methods from its parent class. It's like saying "a dog is-a mammal". The child class can then specialize or override the inherited behavior to fulfill its specific needs. This promotes code reuse and eliminates the need to re-write common functionalities.
