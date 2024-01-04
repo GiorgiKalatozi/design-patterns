@@ -1,20 +1,19 @@
 class School {
-  public readonly name: string;
-  private readonly students: Student[] = [];
+  public name: string;
+  private students: Student[] = [];
 
   constructor(name: string) {
     this.name = name;
   }
 
-  public addStudent(student: Student) {
+  addStudent(student: Student): void {
     this.students.push(student);
-    student.school = this; // Set student reference to school
   }
 }
 
 class Student {
-  public name: string;
-  public school: School | undefined;
+  private name: string;
+  private school: School;
 
   constructor(name: string, school: School) {
     this.name = name;
@@ -22,8 +21,12 @@ class Student {
   }
 }
 
-const oxford = new School("Oxford University");
-const giorgi = new Student("Giorgi", oxford);
-oxford.addStudent(giorgi); // Add student with school reference
+// Usage
+const highSchool = new School("High School 1");
+const student1 = new Student("Student A", highSchool);
+const student2 = new Student("Student A", highSchool);
+const student3 = new Student("Student A", highSchool);
 
-console.log(`Giorgi attends ${giorgi.school?.name}`);
+highSchool.addStudent(student1);
+highSchool.addStudent(student2);
+highSchool.addStudent(student3);
