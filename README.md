@@ -479,3 +479,91 @@ Inheritance is an Is-A relationship between classes where a parent class is a ge
 ### Conclusion:
 
 Understanding dependency relationships and inheritance is fundamental in designing flexible and maintainable object-oriented systems. Dependency injection offers a specific technique for managing dependencies, while inheritance facilitates code reuse through a hierarchical "is-a" relationship.
+
+# Abstraction
+
+In object-oriented programming (OOP), abstraction is a fundamental concept that involves simplifying complex systems by modeling classes based on the essential properties and behaviors they possess while hiding unnecessary details. Abstraction allows developers to focus on relevant aspects of an object and ignore the irrelevant ones. It is achieved through the use of abstract classes and interfaces.
+
+## In-depth Explanation:
+
+### Abstract Classes:
+
+- An abstract class is a blueprint for other classes and may contain abstract methods, which are methods without a body.
+- Abstract classes cannot be instantiated; they are meant to be subclassed by other classes.
+- Subclasses must provide concrete implementations for the abstract methods.
+
+### Interfaces:
+
+- Interfaces define a contract for classes to follow, specifying a set of methods and properties.
+- A class can implement multiple interfaces, enforcing a specific structure for the implementing classes.
+- Interfaces do not provide implementations; they only declare the signatures of methods and properties.
+
+## Example in TypeScript:
+
+Let's model different shapes using an abstract class `Shape` and an interface `Drawable` to represent objects that can be drawn. Subclasses will then implement the `Drawable` interface and provide concrete implementations for the abstract methods in the `Shape` class.
+
+```typescript
+// Drawable interface
+interface Drawable {
+  draw(): void;
+}
+
+// Abstract class Shape
+abstract class Shape implements Drawable {
+  constructor(protected x: number, protected y: number) {}
+
+  // Abstract method
+  abstract calculateArea(): number;
+
+  // Concrete method
+  displayLocation(): void {
+    console.log(`Shape is located at (${this.x}, ${this.y})`);
+  }
+
+  // Implementation of the Drawable interface
+  draw(): void {
+    console.log("Drawing the shape...");
+  }
+}
+
+// Concrete class Circle
+class Circle extends Shape {
+  constructor(x: number, y: number, private radius: number) {
+    super(x, y);
+  }
+
+  // Implementation of abstract method
+  calculateArea(): number {
+    return Math.PI * this.radius * this.radius;
+  }
+}
+
+// Concrete class Rectangle
+class Rectangle extends Shape {
+  constructor(
+    x: number,
+    y: number,
+    private width: number,
+    private height: number
+  ) {
+    super(x, y);
+  }
+
+  // Implementation of abstract method
+  calculateArea(): number {
+    return this.width * this.height;
+  }
+}
+
+// Usage
+const circle = new Circle(5, 5, 3);
+const rectangle = new Rectangle(10, 10, 4, 6);
+
+circle.displayLocation();
+circle.draw();
+console.log("Circle Area:", circle.calculateArea());
+
+rectangle.displayLocation();
+rectangle.draw();
+console.log("Rectangle Area:", rectangle.calculateArea());
+```
