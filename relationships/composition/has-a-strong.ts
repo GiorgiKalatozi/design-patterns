@@ -22,13 +22,12 @@ class Vehicle {
     this.seats = Array(4).fill(new Seat());
   }
 
-  mode() {
-    // Moving
+  drive() {
+    // Implementation
   }
 }
 
 const vehicle = new Vehicle();
-// Do something with Vehicle
 // The Wheel, Door, and seats will be garbage collected (deleted) when they're no longer in use
 
 // Note that you cannot keep the Door or any other object alive after destroying the Vehicle object.
@@ -37,7 +36,7 @@ const vehicle = new Vehicle();
 // Example 2
 
 // class Engine {
-//     // Engine implementation
+//     // implementation
 // }
 
 // class Car {
