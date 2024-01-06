@@ -567,3 +567,40 @@ rectangle.displayLocation();
 rectangle.draw();
 console.log("Rectangle Area:", rectangle.calculateArea());
 ```
+
+Singleton design pattern is a creational pattern that ensures a class has only one instance and provides a global point of access to that instance. This pattern is useful when exactly one object is needed to coordinate actions across the system.
+
+Here's a breakdown of the Singleton pattern and an example in TypeScript:
+
+Singleton Design Pattern:
+Characteristics:
+Single Instance: The Singleton pattern ensures that a class has only one instance and provides a global point of access to it.
+
+Global Access: The instance is globally accessible. Any other part of the program can easily obtain a reference to the singleton instance.
+
+Lazy Initialization: The instance is created only if it is requested for the first time. This is often called "lazy initialization" and helps improve performance by avoiding unnecessary instantiation.
+
+Global Point of Access: The Singleton class provides a method to access its unique instance.
+
+class Singleton {
+private static instance: Singleton;
+
+// The Singleton's constructor should always be private to prevent instantiation from outside the class
+private constructor() {}
+
+// Public method to get the instance of the Singleton class
+public static getInstance(): Singleton {
+if (!Singleton.instance) {
+Singleton.instance = new Singleton();
+}
+return Singleton.instance;
+}
+
+// Additional methods and properties can be added here
+}
+
+// Example usage
+const instance1 = Singleton.getInstance();
+const instance2 = Singleton.getInstance();
+
+console.log(instance1 === instance2); // Output: true
