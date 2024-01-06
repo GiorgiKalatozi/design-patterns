@@ -1,5 +1,5 @@
-class DatabaseConnection {
-  private static instance: DatabaseConnection;
+class Database {
+  private static instance: Database;
   private isConnected: boolean = false;
 
   private constructor() {
@@ -8,11 +8,11 @@ class DatabaseConnection {
     console.log("Database connection initialized");
   }
 
-  public static getInstance(): DatabaseConnection {
-    if (!DatabaseConnection.instance) {
-      DatabaseConnection.instance = new DatabaseConnection();
+  public static getInstance(): Database {
+    if (!Database.instance) {
+      Database.instance = new Database();
     }
-    return DatabaseConnection.instance;
+    return Database.instance;
   }
 
   public connect(): void {
@@ -40,16 +40,16 @@ class DatabaseConnection {
 }
 
 // Example usage
-const dbConnection1 = DatabaseConnection.getInstance();
-const dbConnection2 = DatabaseConnection.getInstance();
+const db1 = Database.getInstance();
+const db2 = Database.getInstance();
 
-console.log(dbConnection1 === dbConnection2); // Output: true
+console.log(db1 === db2); // Output: true
 
-dbConnection1.connect(); // Output: Connecting to the database...
-dbConnection2.disconnect(); // Output: Not connected to the database
+db1.connect(); // Output: Connecting to the database...
+db2.disconnect(); // Output: Not connected to the database
 
 // Subsequent calls will use the existing instance
-const dbConnection3 = DatabaseConnection.getInstance();
+const dbConnection3 = Database.getInstance();
 dbConnection3.connect(); // Output: Already connected to the database
 
 // Implementation
