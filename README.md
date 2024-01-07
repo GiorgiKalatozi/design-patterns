@@ -610,3 +610,15 @@ const instance2 = Singleton.getInstance();
 
 console.log(instance1 === instance2); // Output: true
 ```
+
+### Prototype Pattern
+
+What is the Prototype Pattern?
+
+It's a creational design pattern that lets you create new objects by cloning existing ones, rather than using a constructor.
+It's often used to avoid expensive object creation processes or when you need more flexibility in object creation.
+Key Aspects:
+
+Prototype Interface: Defines the methods that prototypes must implement, typically including a clone() method.
+Concrete Prototypes: Implement the prototype interface and provide the specific cloning logic.
+Client Code: Uses prototypes to create new objects by cloning them.
