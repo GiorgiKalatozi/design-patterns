@@ -7,7 +7,6 @@ class Database {
     // For a real-world scenario, you would establish a connection to a database here
     console.log("Database connection initialized");
   }
-
   public static getInstance(): Database {
     if (!Database.instance) {
       Database.instance = new Database();
