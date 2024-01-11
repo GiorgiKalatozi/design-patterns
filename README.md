@@ -756,3 +756,50 @@ The advantage is obvious: New shapes can be added without changing a single line
 Modularization is a big issue in today's programming. Programmers all over the world are trying to avoid the idea of adding code to existing classes in order to make them support encapsulating more general information. Take the case of an information manager which manages phone numbers. Phone numbers have a particular rule on which they get generated depending on areas and countries. If at some point the application should be changed in order to support adding numbers form a new country, the code of the application would have to be changed and it would become more and more complicated.
 
 In order to prevent it, the Abstract Factory design pattern is used. Using this pattern a framework is defined, which produces objects that follow a general pattern and at runtime this factory is paired with any concrete factory to produce objects that follow the pattern of a certain country. In other words, the Abstract Factory is a super-factory which creates other factories (Factory of factories).
+
+### Builder Pattern
+
+Overview
+The Builder Pattern is a creational design pattern that separates the construction of a complex object from its representation, allowing the same construction process to create various representations. It is useful when an object needs to be constructed with numerous optional parameters or configurations, and when you want to ensure a clear and fluent API for object creation.
+
+Purpose
+The main purpose of the Builder Pattern is to solve the problem of an anti-pattern called the "Telescoping Constructor." This occurs when a class has multiple constructors with different parameter combinations, leading to a combinatorial explosion of constructors.
+
+Key Components
+Builder: Defines an interface for constructing parts of the product.
+ConcreteBuilder: Implements the Builder interface to construct and assemble parts of the product.
+Director: Manages the construction process using a Builder.
+Product: Represents the complex object being constructed.
+Use Cases
+When an object has a large number of parameters: The Builder Pattern helps manage the construction of an object with many optional parameters, making the code more readable.
+
+When you want to ensure a clear and fluent API: The pattern allows for a step-by-step construction process, resulting in an expressive and easy-to-read interface for object creation.
+
+Benefits
+Encapsulates construction logic: The construction process is encapsulated within the Builder, providing a clear separation of concerns.
+
+Facilitates the creation of different representations: The same construction process can be used to create different representations of the product.
+
+What It Is:
+
+A creational design pattern that separates the construction of a complex object from its representation.
+Provides a step-by-step approach to object creation, allowing for flexible configuration and optional attributes.
+Encapsulates the construction logic within a separate Builder class, making the process more readable and maintainable.
+Why It's Useful:
+
+Complex Object Creation: Manages the creation of objects with multiple, potentially optional, or interdependent parts in a clear and organized manner.
+Flexible Configurations: Allows the creation of different object variations without modifying the core object class, promoting reusability and customization.
+Immutability: Facilitates the creation of immutable objects, ensuring their state cannot be changed after construction, enhancing data integrity and predictability.
+Step-by-Step Building: Enables incremental object construction, which can be useful for validation, partial object creation, or lazy initialization.
+Use Cases:
+
+Construction of objects with many attributes or complex relationships between those attributes.
+Creating objects with optional or conditional attributes.
+Building immutable objects.
+Creating objects with a fluent interface for a more readable construction process.
+Problem It Solves:
+
+Telescoping Constructor Anti-Pattern: Avoids having constructors with long and unwieldy parameter lists, making code harder to read and maintain.
+Overly Complex Object Construction: Simplifies the creation of objects with many attributes or complex dependencies, improving code clarity and manageability.
+
+think about creating a director if the same creation code is used to create serveral objects
