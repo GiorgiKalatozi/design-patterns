@@ -951,3 +951,37 @@ Two-Way Adapters: Adapters can also convert calls in the opposite direction, fro
 Multiple Adapters: A single adaptee can have multiple adapters, adapting it to different target interfaces.
 Object Adapters vs. Class Adapters: Object adapters use composition to hold a reference to the adaptee, while class adapters use inheritance to subclass the adaptee.
 Remember: The Adapter pattern is a valuable tool for bridging the gap between incompatible interfaces, promoting flexibility, reusability, and code interoperability in software design.
+
+### Strategy Pattern
+
+Overview
+The Strategy Pattern is a behavioral design pattern that defines a family of algorithms, encapsulates each algorithm, and makes them interchangeable. It lets the algorithm vary independently from the context that uses the algorithm. In simpler terms, the strategy pattern allows a client to choose from a family of algorithms and use them interchangeably.
+
+Purpose
+The main purpose of the Strategy Pattern is to define a set of algorithms, encapsulate each algorithm, and make them interchangeable. This pattern enables a client to choose an algorithm dynamically at runtime, promoting flexibility and easing the extension of algorithm variations.
+
+Key Components
+Context: This is the class that maintains a reference to the selected strategy. The context is the client interface, and it delegates the algorithm-specific behavior to the strategy.
+
+Strategy: This is an interface or abstract class that defines the family of algorithms. Concrete strategy classes implement this interface, providing specific algorithmic implementations.
+
+Concrete Strategies: These are the classes that implement the Strategy interface, providing different variations of algorithms.
+
+Use Cases
+When you have a family of related algorithms: Use the Strategy Pattern when you have a set of related algorithms and you want to make them interchangeable.
+
+To allow clients to choose algorithms dynamically: When clients need to choose an algorithm dynamically at runtime, the Strategy Pattern provides a clean way to switch between algorithms without altering the client code.
+
+To isolate algorithm-specific code: The pattern helps in encapsulating the algorithmic details in separate strategy classes, promoting maintainability and ease of extension.
+
+Benefits
+Flexibility and interchangeability: The Strategy Pattern allows clients to choose algorithms dynamically, making the system more flexible. It also enables easy interchangeability of algorithms.
+
+Encapsulation: Each algorithm is encapsulated in its own strategy class, isolating the algorithmic details from the rest of the code.
+
+Promotes code reuse: Concrete strategies can be reused in different contexts, promoting code reuse across the application.
+
+Real-Life Example
+Consider an online marketplace where sellers can choose different pricing strategies for their products: fixed pricing, discount pricing, and auction pricing. The Strategy Pattern can be applied to encapsulate these pricing strategies, allowing sellers to choose and switch between them dynamically. This flexibility enables the marketplace to adapt to different pricing models without modifying the core pricing logic.
+
+In summary, the Strategy Pattern provides a way to define a family of algorithms, encapsulate each algorithm, and make them interchangeable. It promotes flexibility, code reuse, and maintainability by allowing clients to dynamically choose and switch between algorithms at runtime.
