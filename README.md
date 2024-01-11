@@ -622,3 +622,137 @@ Key Aspects:
 Prototype Interface: Defines the methods that prototypes must implement, typically including a clone() method.
 Concrete Prototypes: Implement the prototype interface and provide the specific cloning logic.
 Client Code: Uses prototypes to create new objects by cloning them.
+
+### Factory Method Pattern
+
+In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
+
+The beauty here is that the interface doesn't expose to the client what is the complexity in creating that object, because this interface doesn't implement how that object is created, that implementation is differed or is left up to classes which are implementing the actual logic to initialize those objects.
+
+Factory method pattern is useful for the creation of objects which may be similar but still have different implementations or depend on different parameters (have different properties) on how they are initialized. This helps in hiding complexity and keeping abstraction intact.
+
+#### Advantages
+
+**Encapsulation and Abstraction:**
+
+- The Factory Pattern encapsulates the object creation logic within the factory classes. Clients don't need to know the specific details of how objects are created; they only interact with the factory interface.
+- It abstracts the process of object creation, allowing changes to be made in the future without affecting the client code.
+
+**Flexibility and Extensibility:**
+
+- The Factory Pattern allows for easy extension by adding new concrete classes and corresponding factories without modifying existing code. This makes the system more flexible and adaptable to change.
+- You can introduce new products (concrete classes) and factories without affecting the existing client code.
+
+**Decoupling:**
+
+- The pattern decouples the client code from the concrete classes. Clients rely on the factory interface, and they are shielded from the details of how objects are created. This reduces dependencies and improves maintainability.
+
+**Centralized Configuration:**
+
+- The creation of objects is centralized within the factories. This can be beneficial for managing and controlling the configuration of objects, especially in complex systems.
+
+**Consistency:**
+
+- By using factories, you ensure consistent object creation throughout the application. This can be particularly important when creating objects with complex initialization logic or dependencies.
+
+**Testing:**
+
+- The Factory Pattern facilitates unit testing by allowing the substitution of mock or stub objects for testing purposes. Testing is simplified because the creation of objects is concentrated in the factories.
+
+**Code Organization:**
+
+- The pattern helps organize code by separating concerns related to object creation. This can lead to a more modular and maintainable codebase.
+
+**Adherence to Design Principles:**
+
+- The Factory Pattern adheres to principles such as the Dependency Inversion Principle (DIP) and the Open/Closed Principle (OCP) from SOLID principles. It promotes code that is easy to extend and modify without modifying existing code.
+
+In summary, the Factory Pattern provides a way to create objects in a flexible, maintainable, and decoupled manner, making it easier to manage changes and extensions in your software. It promotes good design principles and can contribute to the overall quality and maintainability of your codebase.
+
+While both Factory Method and Abstract Factory are creational design patterns and share similarities, they are distinct patterns with different purposes and implementations.
+
+### Factory Method Pattern
+
+#### Purpose
+
+The Factory Method Pattern defines an interface for creating an object but lets subclasses alter the type of objects that will be created. It provides an interface for creating an object in a superclass but allows subclasses to alter the type of objects created.
+
+#### Key Components
+
+- **Creator:** Declares the factory method, which returns an object of a product type.
+- **ConcreteCreator:** Implements the factory method and returns an instance of a concrete product.
+- **Product:** The interface or abstract class defining the object created by the factory method.
+- **ConcreteProduct:** Implements the Product interface or abstract class.
+
+#### Example
+
+In the burger factory example provided earlier, the `BurgerFactory` interface with `createBurger` method is an example of the Factory Method Pattern.
+
+### Abstract Factory Pattern
+
+#### Purpose
+
+The Abstract Factory Pattern provides an interface for creating families of related or dependent objects without specifying their concrete classes. It deals with multiple factory methods, each responsible for creating a family of related products.
+
+#### Key Components
+
+- **AbstractFactory:** Declares a set of methods for creating abstract products.
+- **ConcreteFactory:** Implements the methods declared in the abstract factory to create concrete products.
+- **AbstractProduct:** Declares an interface for a type of product.
+- **ConcreteProduct:** Implements the `AbstractProduct` interface or abstract class.
+- **Client:** Uses only interfaces declared by `AbstractFactory` and `AbstractProduct` classes.
+
+#### Example
+
+In the burger example, an abstract factory could be used to create families of related products, such as creating not only burgers but also related items like drinks and fries. Each concrete factory (e.g., `FastFoodFactory`, `HealthyFoodFactory`) would create a family of related products (e.g., Cheeseburger, Soda, Fries).
+
+#### Differences
+
+- **Scope:** Factory handles one type, while Abstract Factory handles families of related types.
+- **Complexity:** Factory is simpler; Abstract Factory has more classes and interfaces.
+- **Flexibility:** Factory offers more flexibility for individual object customization, while Abstract Factory enforces consistency within families.
+
+In summary, while both patterns involve creating objects, the Factory Method Pattern is about creating a single product through a method in a single interface or abstract class, while the Abstract Factory Pattern is about creating families of related products through multiple factory methods.
+
+The Factory Pattern involves a single method to create objects, while the Abstract Factory Pattern involves multiple related factories (factories of factories). The Abstract Factory Pattern involves multiple factory methods, each responsible for creating a family of related objects. It is more concerned with creating families of objects, whereas the Factory Pattern focuses on creating a single type of object.
+
+### Factory Design Pattern vs. Abstract Factory Design Pattern
+
+Both factory design pattern and abstract factory design pattern are creational design patterns that deal with object creation, but they differ in focus and capabilities.
+
+**Factory Design Pattern:**
+
+- **Focus:** Creates objects of a single type based on some criteria.
+- **Example:** Imagine a `ShapeFactory` that creates different shapes like circles, squares, and triangles based on a provided shape type.
+- **Use cases:** When you need to create different variations of a single object type without exposing the creation logic to the client code.
+
+**Abstract Factory Design Pattern:**
+
+- **Focus:** Creates families of related objects within a broader category.
+- **Example:** A `UIThemeFactory` might create a set of related UI components like buttons, menus, and text fields, with different styles (e.g., light, dark) within a chosen style theme.
+- **Use cases:** When you need to create families of related objects that adhere to a consistent theme or style.
+
+**Differences:**
+
+- **Scope:** Factory handles one type, while Abstract Factory handles families of related types.
+- **Complexity:** Factory is simpler; Abstract Factory has more classes and interfaces.
+- **Flexibility:** Factory offers more flexibility for individual object customization, while Abstract Factory enforces consistency within families.
+
+In short, both patterns are valuable tools for managing object creation. When you need to create different variations of a single object, choose Factory. When you need to create families of related objects consistently, choose Abstract Factory. Remember, the best choice depends on your specific needs and the complexity of your application.
+
+### Intent
+
+- Creates objects without exposing the instantiation logic to the client.
+- Refers to the newly created object through a common interface.
+
+The client needs a product, but instead of creating it directly using the new operator, it asks the factory object for a new product, providing the information about the type of object it needs. The factory instantiates a new concrete product and then returns to the client the newly created product (casted to abstract product class). The client uses the products as abstract products without being aware of their concrete implementation.
+
+Probably the factory pattern is one of the most used patterns.
+
+For example, a graphical application works with shapes. In our implementation, the drawing framework is the client and the shapes are the products. All the shapes are derived from an abstract shape class (or interface). The `Shape` class defines the `draw` and `move` operations which must be implemented by the concrete shapes. Let's assume a command is selected from the menu to create a new Circle. The framework receives the shape type as a string parameter, it asks the factory to create a new shape sending the parameter received from the menu. The factory creates a new circle and returns it to the framework, casted to an abstract shape. Then the framework uses the object as casted to the abstract class without being aware of the concrete object type.
+
+The advantage is obvious: New shapes can be added without changing a single line of code in the framework (the client code that uses the shapes from the factory). As it is shown in the next sections, there are certain factory implementations that allow adding new products without even modifying the factory class.
+
+Modularization is a big issue in today's programming. Programmers all over the world are trying to avoid the idea of adding code to existing classes in order to make them support encapsulating more general information. Take the case of an information manager which manages phone numbers. Phone numbers have a particular rule on which they get generated depending on areas and countries. If at some point the application should be changed in order to support adding numbers form a new country, the code of the application would have to be changed and it would become more and more complicated.
+
+In order to prevent it, the Abstract Factory design pattern is used. Using this pattern a framework is defined, which produces objects that follow a general pattern and at runtime this factory is paired with any concrete factory to produce objects that follow the pattern of a certain country. In other words, the Abstract Factory is a super-factory which creates other factories (Factory of factories).
