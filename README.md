@@ -1101,3 +1101,89 @@ Push vs. Pull: Decide whether observers actively pull data from the subject or g
 Thread Safety: Ensure thread-safe notifications if used in multi-threaded environments.
 Variations: Explore variants like the Publish-Subscribe pattern for more complex scenarios.
 Remember: The Observer pattern is a fundamental building block for event-driven systems, enabling efficient communication and updates between loosely coupled objects in a wide range of software applications.
+
+### Command Pattern
+
+Overview
+The Command Pattern is a behavioral design pattern that turns a request into a standalone object. This object contains all the information about the request, allowing for parameterization of clients with different requests, queuing of requests, and logging of the operations. It also supports the undoable operations by keeping track of the state before the command execution.
+
+Purpose
+The primary purpose of the Command Pattern is to decouple the sender of a request (client) from the object that processes the request (receiver). This decoupling is achieved by encapsulating a request as an object, thereby allowing clients to parameterize recipients with queues, requests, and operations. It promotes flexibility, extensibility, and the ability to support undoable operations.
+
+Key Components
+Command: This is an interface or abstract class that declares the execute method. Concrete command classes implement this interface, encapsulating a specific operation.
+
+Concrete Command: This is a class that implements the Command interface and encapsulates a specific operation. It holds a reference to the receiver and invokes the corresponding operation on the receiver.
+
+Receiver: This is the object that performs the actual operation when the execute method of the command is called.
+
+Invoker: This is the object that requests the operation to be performed. It holds a reference to the command but does not know about the concrete command class.
+
+Client: The client is responsible for creating the command and configuring it with a receiver. It can also manipulate the command objects and decide when to execute them.
+
+Use Cases
+When you want to parameterize objects with operations: Use the Command Pattern when you want to decouple senders and receivers of requests, allowing clients to parameterize objects with different operations.
+
+To support undoable operations: The Command Pattern provides an elegant way to implement undoable operations by keeping a history of executed commands and their states.
+
+For queuing requests: It is useful when you want to queue requests, delay their execution, or schedule them.
+
+When you want to support logging and auditing: Commands encapsulate operations, making it easy to log, audit, or track executed commands.
+
+Benefits
+Decoupling: The Command Pattern decouples the sender and receiver, making it easy to add, remove, or replace commands without affecting the client.
+
+Undoable Operations: The pattern supports undoable operations by maintaining the state before command execution.
+
+Queuing and Scheduling: Commands can be queued or scheduled for execution.
+
+Logging and Auditing: Operations encapsulated in commands make it easy to log or audit executed commands.
+
+Real-World Analogy
+
+After a long walk through the city, you get to a nice restaurant and sit at the table by the window. A friendly waiter approaches you and quickly takes your order, writing it down on a piece of paper. The waiter goes to the kitchen and sticks the order on the wall. After a while, the order gets to the chef, who reads it and cooks the meal accordingly. The cook places the meal on a tray along with the order. The waiter discovers the tray, checks the order to make sure everything is as you wanted it, and brings everything to your table.
+
+The paper order serves as a command. It remains in a queue until the chef is ready to serve it. The order contains all the relevant information required to cook the meal. It allows the chef to start cooking right away instead of running around clarifying the order details from you directly.s
+
+1
+
+-
+
+3
+Here's an in-depth exploration of the Command pattern:
+
+What It Is:
+
+A behavioral design pattern that encapsulates a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations.
+It separates the request (what needs to be done) from the receiver (who does it), promoting loose coupling and flexibility.
+Why We Need It:
+
+Decoupling: Isolates the object that invokes an operation from the one that knows how to perform it, enabling independent development and modification.
+Queuing and Scheduling: Allows commands to be queued, scheduled, or even undone, enabling more complex control flows and error handling.
+Transactions: Facilitates rollback or reversal of actions by undoing commands, as in database transactions or editing software.
+Macro Commands: Enables the creation of composite commands by combining multiple commands into a single unit, enabling higher-level operations.
+GUI Event Handling: Captures user interactions as commands and maps them to actions, providing a flexible way to handle UI events.
+When to Use It:
+
+Undo/Redo Functionality: When your application needs to support reversing actions.
+Asynchronous Operations: When you need to queue requests for later execution or execute them in a different thread.
+Logging and Auditing: When you want to record a history of actions for analysis or debugging.
+Customizable Menus and Toolbars: When you want to dynamically enable or disable actions based on user permissions or application state.
+Key Components:
+
+Command: The interface or abstract class that defines the execute method for carrying out the request.
+Concrete Command: The classes that implement the Command interface, specifying the actions to be performed.
+Invoker: The object that holds a command and calls its execute method, often unaware of the specific command implementation.
+Receiver: The object that knows how to perform the requested operation and is called by the command.
+
+Benefits:
+
+Loose Coupling: Promotes modularity and reusability of components.
+Extensibility: Easily add new commands without modifying existing code.
+Queueing and Scheduling: Enables flexible control over command execution.
+Undo/Redo: Facilitates reversibility of actions.
+Testability: Commands can be tested in isolation.
+Drawbacks:
+
+Increased Object Creation: Can lead to more objects and potential overhead.
+Complexity: May introduce additional complexity for simple scenarios
