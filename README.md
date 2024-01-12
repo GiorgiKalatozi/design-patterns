@@ -1324,3 +1324,67 @@ Drawbacks:
 
 Complexity: Can introduce complexity when multiple decorators are used, making code harder to understand and debug.
 Performance Overhead: Wrapping objects in decorators can add some overhead to method calls.
+
+Proxy Pattern
+Overview
+The Proxy Pattern is a structural design pattern that provides a surrogate or placeholder for another object to control access to it. It acts as a substitute or placeholder for another object, allowing you to control access to that object, add additional behaviors, or delay the creation of the real object until it is actually needed.
+
+Purpose
+The primary purpose of the Proxy Pattern is to control access to an object, introducing an additional level of indirection. This can be useful for various reasons, such as controlling resource usage, implementing lazy loading, or adding additional security checks.
+
+Key Components
+Subject: This is the common interface or abstract class that defines the methods to be implemented by both the real subject and the proxy.
+
+Real Subject: This is the real object that the proxy represents. It implements the Subject interface or extends the Subject class.
+
+Proxy: This is the class that acts as a surrogate for the real subject. It implements the Subject interface and has a reference to the real subject.
+
+Use Cases
+Lazy Loading: When you want to defer the creation and initialization of a resource-intensive object until it is actually needed.
+
+Access Control: To control access to an object by implementing additional security checks or providing different levels of access.
+
+Virtual Proxy: When you want to represent an object that is expensive to create or load, and you want to delay its creation until it is actually required.
+
+Benefits
+Controlled Access: The proxy can control access to the real subject, allowing for additional checks or lazy loading.
+
+Reduced Resource Usage: Lazy loading proxies can help reduce resource usage by only creating and initializing the real subject when needed.
+
+Security: Proxies can implement security checks to control access to the real subject.
+
+Consider a proxy server that acts as an intermediary between a client and a real server. The proxy server can control access to the real server, implement security checks, and cache responses to improve performance. This is a real-life application of the Proxy Pattern in networking.
+
+Proxy is a structural design pattern that lets you provide a substitute or placeholder for another object. A proxy controls access to the original object, allowing you to perform something either before or after the request gets through to the original object.
+
+Purpose:
+
+Controls access to another object: Acts as a placeholder or surrogate for a real object, intercepting operations on it.
+Adds functionality without modifying the original object: Enhances or modifies behavior without touching its core implementation.
+Benefits:
+
+Access control: Restricts or grants access to certain properties or methods.
+Virtual proxies: Delays expensive object creation until needed.
+Remote proxies: Manages communication with remote objects.
+Logging and monitoring: Tracks object usage and behavior.
+Security: Enforces access rules and protects sensitive data.
+Caching: Stores results for later retrieval to improve performance.
+When to Use It:
+
+Lazy initialization: Avoids upfront object creation costs for potentially unused objects.
+Access control: Enforces security or permissions for object access.
+Logging and monitoring: Tracks object usage for debugging or analysis.
+Remote communication: Handles interactions with objects in different processes or machines.
+Additional functionality: Adds new features without modifying original object code.
+
+Key Takeaways:
+
+A Proxy acts as a middleman between a client and a real object.
+It provides a level of indirection for controlling access and enhancing functionality.
+It's a powerful pattern for managing object access, optimizing performance, and adding flexibility to designs.
+Use it judiciously to avoid unnecessary complexity.
+Additional Insights:
+
+Proxies can be used for dynamic object creation, caching, and validation.
+They can be combined with other patterns like Decorator or Observer for more complex scenarios.
+Carefully consider the trade-offs between flexibility and complexity when using Proxies.
